@@ -1,0 +1,72 @@
+﻿@using DatetimeExplanation.Model;
+@page "/"
+
+<h1>Datetime.Now Vs Datetime.UtcNow</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Servidor</th>
+            <th>Lo que ve el usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Server server in servers)
+        {
+            <tr>
+                <td>@server.Name</td>
+                <td>El usuario ve: @server.PrintedValue</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button @onclick="SimularDatetimeNow">Simular Datetime.Now</button>
+<button @onclick="SimularDatetimeUtcNow">Simular Datetime.UtcNow</button>
+<button @onclick="SimularDatetimeWithUserTimezone">Simular con timezone del usuario</button>
+
+@code{
+    List<Server> servers;
+
+    protected override void OnInitialized()
+    {
+        servers = new List<Server>();
+        servers.Add(new Server("China", "China Standard Time"));
+        servers.Add(new Server("España", "Romance Standard Time"));
+        servers.Add(new Server("Irlanda", "GMT Standard Time"));
+        servers.Add(new Server("México(mexico city)", "Central Standard Time (Mexico)"));
+
+    }
+
+    public void SimularDatetimeNow()
+    {
+        foreach (Server server in servers)
+        {
+            server.DateTimeNow();
+        }
+
+        StateHasChanged();
+    }
+
+    public void SimularDatetimeUtcNow()
+    {
+        foreach (Server server in servers)
+        {
+            server.DateTimeUtcNow();
+        }
+
+        StateHasChanged();
+    }
+
+
+    public void SimularDatetimeWithUserTimezone()
+    {
+        foreach (Server server in servers)
+        {
+            server.DateTimeUtcNowWithUserTimezone();
+        }
+
+        StateHasChanged();
+    }
+
+}
+
