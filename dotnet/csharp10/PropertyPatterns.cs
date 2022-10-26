@@ -12,6 +12,16 @@ internal class PropertyPatterns
         string resultado = ExpressionCsharp10(persona);
     }
 
+    //Este ejemplo es en c#9, es muy verbose
+    private static string ExpressionCsharp9(Persona persona) =>
+        persona switch
+        {
+
+            { subtipo: { Edad: >= 18 } } => "es mayor de edad",
+            { subtipo: { Edad: < 18 } } => "es menor de edad",
+            _ => throw new NotSupportedException()
+        };
+
     private static string ExpressionCsharp10(Persona persona) =>
         persona switch
         {
@@ -22,15 +32,7 @@ internal class PropertyPatterns
         };
 
 
-    //Este ejemplo es en c#9, es muy verbose
-    private static string ExpressionCsharp9(Persona persona) =>
-        persona switch
-        {
-
-            { subtipo: { Edad: >= 18 } } => "es mayor de edad",
-            { subtipo: { Edad: < 18 } } => "es menor de edad",
-            _ => throw new NotSupportedException()
-        };
+    
 }
 
 

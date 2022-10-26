@@ -4,10 +4,11 @@ namespace csharp10;
 internal class EjemploRecords
 {
     public record Persona(string Nombre, int Edad);
+    
 
     public void Ejemplo()
     {
-        Persona persona = new("Ivan", 28);
+        Persona persona = new("Ivan", 29);
         Console.WriteLine($"El nombre es: {persona.Nombre}");
     }
 
@@ -29,7 +30,7 @@ internal class EjemploRecords
 
     public record PersonaStringSealed(string Nombre, int Edad)
     {
-        public sealed override string ToString()
+        public override string ToString()
         {
             return $"El nombre es: {Nombre} y su edad es: {Edad}";
         }
@@ -44,10 +45,10 @@ internal class EjemploRecords
         }
 
         //da un error y no deja compilar
-        //public override string ToString()
-        //{
-        //    return $"El nombre es: {Nombre} " +
-        //        $"y su nota en matematicas es {Notas.Matematicas}";
-        //}
+        public override string ToString()
+        {
+            return $"El nombre es: {Nombre} " +
+                $"y su nota en matematicas es {Notas.Matematicas}";
+        }
     }
 }

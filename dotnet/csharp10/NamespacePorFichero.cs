@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace csharp10;
 
-namespace csharp10;
 class NamespacePorFichero
 {
 }
+class NamespacePorFichero2
+{
+}
+

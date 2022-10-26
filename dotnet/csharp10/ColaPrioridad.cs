@@ -8,6 +8,7 @@ internal class ColaPrioridad
         colaPrioridad.Enqueue("Opel", 2);
         colaPrioridad.Enqueue("Audi", 1);
         colaPrioridad.Enqueue("BMW", 3);
+        
     } 
 
 }
